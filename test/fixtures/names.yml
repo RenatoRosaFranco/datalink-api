@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: names
+#
+#  id         :integer          not null, primary key
+#  State      :string
+#  acronym    :string
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  region_id  :integer
+#
+# Indexes
+#
+#  index_names_on_region_id  (region_id)
+#
+
+one:
+  State: MyString
+  name: MyString
+  acronym: MyString
+  region: one
+
+two:
+  State: MyString
+  name: MyString
+  acronym: MyString
+  region: two

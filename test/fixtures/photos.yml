@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: photos
+#
+#  id         :integer          not null, primary key
+#  image_path :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  place_id   :integer
+#
+# Indexes
+#
+#  index_photos_on_place_id  (place_id)
+#
+
+one:
+  image_path: MyString
+  place: one
+
+two:
+  image_path: MyString
+  place: two
