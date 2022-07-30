@@ -18,6 +18,9 @@ class City < ApplicationRecord
   self.table_name  = 'cities'
   self.primary_key = 'id'
 
+  # Scope
+  default_scope { where(name: 'São Borja') }
+
   # Relationships
   belongs_to :state
 end

@@ -20,8 +20,11 @@ class State < ApplicationRecord
   self.table_name  = 'states'
   self.primary_key = 'id'
 
+  # Scope
+  default_scope { where(name: 'Rio Grande do Sul') }
+
   # Relationhips
-  has_many :places, dependent: :de
+  has_many :places, dependent: :destroy
 
   # Relationships
   belongs_to :region

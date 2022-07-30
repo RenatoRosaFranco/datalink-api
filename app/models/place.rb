@@ -44,8 +44,8 @@ class Place < ApplicationRecord
 	has_many :routes, through: :route_places
 	has_many :photos, dependent: :destroy
 
-	belongs_to :state
-	belongs_to :city
+	belongs_to :state, optional: true
+	belongs_to :city,  optional: true
 	
 	# Validations
 	validates_presence_of :name

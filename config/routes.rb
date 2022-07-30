@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
 
   # Dashboard
-  namespace :dashboard, constraint: { subdomain: 'api'} do
+  namespace :dashboard, constraint: { subdomain: 'dashboard'} do
     # To be implemented
   end
 
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :api, constraint: { subdomain: 'api' } do
     namespace :v1 do
       defaults format: :json do
+        resources :places
       end
     end
   end
