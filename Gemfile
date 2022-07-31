@@ -29,8 +29,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'rqrcode'
 gem 'friendly_id'
 gem 'bootstrap3-rails'
+gem 'active_model_serializers'
+gem 'fast_jsonapi'
 gem 'jquery-rails'
+gem 'ransack'
 gem 'kaminari'
+gem 'rswag-api'
+gem 'rswag-ui'
+gem 'rack-cors'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -47,8 +53,19 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'awesome_print'
+  gem 'brakeman'
+  gem 'rubocop'
   gem 'better_errors'
+  gem 'rspec-rails'
+  gem 'rswag-specs'
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+  gem 'ffaker'
+  gem 'active_storage_validations'
+  gem 'rubycritic', require: false
+  gem 'simplecov'
   gem 'rails-erd'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -61,11 +78,6 @@ group :development do
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

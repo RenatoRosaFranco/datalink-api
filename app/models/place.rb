@@ -11,13 +11,6 @@
 #  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  city_id    :integer
-#  state_id   :integer
-#
-# Indexes
-#
-#  index_places_on_city_id   (city_id)
-#  index_places_on_state_id  (state_id)
 #
 require 'rqrcode'
 
@@ -26,7 +19,7 @@ class Place < ApplicationRecord
 	friendly_id :name, use: [:slugged]
 
 	# Properties
-	self.table_name = 'places'
+	self.table_name  = 'places'
 	self.primary_key = 'id'
 
 	# Enum
@@ -42,23 +35,33 @@ class Place < ApplicationRecord
 
 	has_many :route_places
 	has_many :routes, through: :route_places
-	has_many :photos, dependent: :destroy
-
-	belongs_to :state, optional: true
-	belongs_to :city,  optional: true
+	has_many :photos, class_name: 'Gallery', dependent: :destroy
 	
 	# Validations
-	validates_presence_of :name
-	validates_uniqueness_of :name
+	validates :name,
+						presence: true,
+						uniqueness: true,
+						allow_blank: false,
+						length: { 
+							minimum: 3,
+							maximum: 30
+						}
 
-	validates_uniqueness_of :short_link
-	validates_presence_of :short_link
-	
-	validates_presence_of :kind
+	validates :kind,
+						presence: true,
+						uniqueness: false,
+						allow_blank: false,
+						inclusion: { in: Place.kinds.keys }
+
+	validates :short_link,
+						presence: true,
+						uniqueness: true,
+						allow_blank: false
 
 	# Callbacks
 	before_create :generate_short_link
 	before_create :generate_qrcode
+
 	after_create  :create_page
 	after_create  :create_address
  	

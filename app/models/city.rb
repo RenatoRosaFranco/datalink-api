@@ -18,9 +18,23 @@ class City < ApplicationRecord
   self.table_name  = 'cities'
   self.primary_key = 'id'
 
-  # Scope
-  default_scope { where(name: 'São Borja') }
-
   # Relationships
+  has_many :addresses, dependent: :destroy
   belongs_to :state
+
+  # Validations
+  validates_uniqueness_of :name, scope: [:state_id]
+
+  validates :name,
+            presence: true,
+            allow_blank: false,
+            length: {
+              minimum: 2,
+              maximum: 45
+            }
+
+  validates :capital,
+            presence: true,
+            allow_blank: false,
+            inclusion: [ true, false ]
 end

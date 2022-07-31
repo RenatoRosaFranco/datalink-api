@@ -8,8 +8,6 @@
 #  updated_at :datetime         not null
 #
 class Region < ApplicationRecord
-	include BRPopulate
-
 	# Properties
 	self.table_name  = 'regions'
 	self.primary_key = 'id'
@@ -17,8 +15,13 @@ class Region < ApplicationRecord
 	# Relationships
 	has_many :states, dependent: :destroy
 
-	# Methods
-	def self.load_data
-		BRPopulate.populate
-	end
+	# Validates
+	validates :name,
+						presence: true,
+						uniqueness: true,
+						allow_blank: false,
+						length: {
+							minimum: 2,
+							maximum: 18
+						}
 end

@@ -20,12 +20,27 @@ class State < ApplicationRecord
   self.table_name  = 'states'
   self.primary_key = 'id'
 
-  # Scope
-  default_scope { where(name: 'Rio Grande do Sul') }
-
   # Relationhips
-  has_many :places, dependent: :destroy
-
-  # Relationships
+  has_many :addresses, dependent: :destroy
+  has_many :cities, dependent: :destroy
   belongs_to :region
+
+  # Validations
+  validates :name,
+            presence: true,
+            uniqueness: true,
+            allow_blank: false,
+            length: { 
+              minimum: 3,
+              maximum: 30
+            }
+
+  validates :acronym,
+            presence: true,
+            uniqueness: true,
+            allow_blank: false,
+            length: {
+              minimum: 1,
+              maximum: 2
+            }
 end

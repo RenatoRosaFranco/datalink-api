@@ -24,5 +24,5 @@ class RoutePlace < ApplicationRecord
 
   # Validations
   validates_uniqueness_of :place_id, 
-                          sscope: [:route_id]
+                          scope: [:route_id]
 end

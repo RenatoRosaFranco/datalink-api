@@ -17,14 +17,32 @@
 #
 class Page < ApplicationRecord
   # Properties
-  self.table_name = 'pages'
+  self.table_name  = 'pages'
   self.primary_key = 'id'
 
   # Validations
+  validates :vpath,
+            length: {
+              minimum: 3,
+              maximum: 145
+            }
+
   validates :about,
             length: {
               minimum: 3,
               maximum: 500
+            }
+
+  validates :facebook,
+            length: {
+              minimum: 3,
+              maximum: 145
+            }
+
+  validates :instagram,
+            length: {
+              minimum: 3,
+              maximum: 145
             }
 
   # Relationships

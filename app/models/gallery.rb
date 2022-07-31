@@ -20,11 +20,12 @@ class Gallery < ApplicationRecord
   self.primary_key = 'id'
 
   # FileUpload
-  has_one_attached :photo, service: :storage
+  has_one_attached :image_path
 
   # Relationships
   belongs_to :place
 
   # Validations
-  validates_presence_of :photo
+  validates :image_path, attached: true,
+                         content_type: [:png, :jpeg]
 end

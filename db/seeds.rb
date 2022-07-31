@@ -10,7 +10,7 @@ require 'benchmark'
 puts "Start running seeds"
 
 realtime = Benchmark.realtime do |realtime|	
-	Region.load_data
+	# some code here
 end
 
 puts "Finished Running Seeds"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_30_004151) do
+ActiveRecord::Schema.define(version: 2022_07_30_185146) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -39,7 +39,11 @@ ActiveRecord::Schema.define(version: 2022_07_30_004151) do
     t.integer "place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "state_id"
+    t.integer "city_id"
+    t.index ["city_id"], name: "index_addresses_on_city_id"
     t.index ["place_id"], name: "index_addresses_on_place_id"
+    t.index ["state_id"], name: "index_addresses_on_state_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -63,11 +67,11 @@ ActiveRecord::Schema.define(version: 2022_07_30_004151) do
   end
 
   create_table "galleries", force: :cascade do |t|
-    t.string "image_path"
+    t.string "photo"
     t.integer "place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["place_id"], name: "index_photos_on_place_id"
+    t.index ["place_id"], name: "index_galleries_on_place_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -87,11 +91,7 @@ ActiveRecord::Schema.define(version: 2022_07_30_004151) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.string "short_link"
-    t.integer "kind"
-    t.integer "state_id"
-    t.integer "city_id"
-    t.index ["city_id"], name: "index_places_on_city_id"
-    t.index ["state_id"], name: "index_places_on_state_id"
+    t.integer "kind", default: 0
   end
 
   create_table "regions", force: :cascade do |t|
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 2022_07_30_004151) do
     t.integer "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["region_id"], name: "index_names_on_region_id"
+    t.index ["region_id"], name: "index_states_on_region_id"
   end
 
 end
