@@ -5,7 +5,7 @@
 # Table name: places
 #
 #  id         :integer          not null, primary key
-#  kind       :integer
+#  kind       :integer          default("Company")
 #  name       :string
 #  short_link :string
 #  slug       :string
@@ -35,7 +35,6 @@ RSpec.describe Place, type: :model do
     it { is_expected.to have_one(:address) }
     it { is_expected.to have_many(:route_places) }
     it { is_expected.to have_many(:routes) }
-    it { is_expected.to have_many(:photos) }
   end
 
   context 'Validations' do
@@ -53,7 +52,6 @@ RSpec.describe Place, type: :model do
     end
 
     context '.short_link' do
-      it { is_expected.to validate_presence_of(:short_link) }
       it { is_expected.to validate_uniqueness_of(:short_link) }
     end
   end

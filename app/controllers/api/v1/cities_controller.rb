@@ -2,7 +2,7 @@
 
 module API
 	module V1
-		class CityController < ApplicationController
+		class CitiesController < ApplicationController
 			before_action :set_city, only: [:show, :update, :destroy]
 
 			def index
@@ -59,8 +59,7 @@ module API
 			end
 
 			def city_params
-				params.require(:city)
-					.permit(:name, :capital, :state_id)
+				params.require(:city).permit(:name, :capital, :state_id)
 			end
 		end
 	end

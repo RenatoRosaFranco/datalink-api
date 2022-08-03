@@ -17,8 +17,8 @@ module API
 
 			def show
 				render json: { 
-					page: page 
-				}, status: :oks
+					page: @page 
+				}, status: :ok
 			end
 
 			def create
@@ -38,7 +38,7 @@ module API
 			def update
 				if @page.update_attributes(page_params)
 					render json: { 
-						page: page 
+						page: @page 
 					}, status: :accepted
 				else
 					render json: { 

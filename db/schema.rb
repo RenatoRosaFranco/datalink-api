@@ -66,14 +66,6 @@ ActiveRecord::Schema.define(version: 2022_07_30_185146) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
-  create_table "galleries", force: :cascade do |t|
-    t.string "photo"
-    t.integer "place_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["place_id"], name: "index_galleries_on_place_id"
-  end
-
   create_table "pages", force: :cascade do |t|
     t.string "vpath"
     t.text "about"

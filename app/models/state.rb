@@ -13,7 +13,7 @@
 #
 # Indexes
 #
-#  index_names_on_region_id  (region_id)
+#  index_states_on_region_id  (region_id)
 #
 class State < ApplicationRecord
   # Properties
@@ -41,6 +41,6 @@ class State < ApplicationRecord
             allow_blank: false,
             length: {
               minimum: 1,
-              maximum: 2
+              maximum: 5
             }
 end

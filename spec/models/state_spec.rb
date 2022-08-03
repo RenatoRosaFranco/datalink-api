@@ -13,7 +13,7 @@
 #
 # Indexes
 #
-#  index_names_on_region_id  (region_id)
+#  index_states_on_region_id  (region_id)
 #
 require 'rails_helper'
 
@@ -47,7 +47,7 @@ RSpec.describe State, type: :model do
       it { is_expected.to validate_presence_of(:acronym) }
       it { is_expected.to validate_uniqueness_of(:acronym) }
       it { is_expected.to validate_length_of(:acronym).is_at_least(1) }
-      it { is_expected.to validate_length_of(:acronym).is_at_most(2) }
+      it { is_expected.to validate_length_of(:acronym).is_at_most(5) }
     end
   end
 end

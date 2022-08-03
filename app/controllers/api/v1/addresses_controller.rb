@@ -60,7 +60,7 @@ module API
 
 			def address_params
 				params.require(:address)
-					.permit(:location, :number, :place)
+					.permit(:location, :number, :place_id)
 			end
 		end
 	end

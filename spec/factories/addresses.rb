@@ -21,11 +21,11 @@
 #
 FactoryBot.define do
   factory :address do
-    location { FFaker::AddressBR.street }
+    location { FFaker::AddressBR.unique.street }
     number { rand(1..5_000) }
     
-    association :place, factory: :place, strategy: :build
-    association :state, factory: :state, strategy: :build
-    association :city,  factory: :city,  strategy: :build
+    place
+    state
+    city
   end
 end

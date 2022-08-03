@@ -17,9 +17,12 @@ Rails.application.routes.draw do
       defaults format: :json do
         resources :addresses
         resources :cities
+        resources :galleries
         resources :places
+        resources :pages
         resources :regions
         resources :routes
+        resources :route_places
         resources :states
       end
     end

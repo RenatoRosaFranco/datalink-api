@@ -5,7 +5,7 @@
 # Table name: places
 #
 #  id         :integer          not null, primary key
-#  kind       :integer
+#  kind       :integer          default("Company")
 #  name       :string
 #  short_link :string
 #  slug       :string
@@ -35,7 +35,6 @@ class Place < ApplicationRecord
 
 	has_many :route_places
 	has_many :routes, through: :route_places
-	has_many :photos, class_name: 'Gallery', dependent: :destroy
 	
 	# Validations
 	validates :name,
@@ -54,7 +53,7 @@ class Place < ApplicationRecord
 						inclusion: { in: Place.kinds.keys }
 
 	validates :short_link,
-						presence: true,
+						presence: false,
 						uniqueness: true,
 						allow_blank: false
 

@@ -17,9 +17,9 @@
 #
 FactoryBot.define do
   factory :city do
-    name { FFaker::AddressBR.city }
+    name { FFaker::AddressBR.unique.city }
     capital { true }
     
-    association :state, factory: :state, strategy: :build
+    state
   end
 end

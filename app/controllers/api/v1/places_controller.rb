@@ -3,7 +3,7 @@
 module API
 	module V1
 		class PlacesController < ApplicationController
-			before_action :set_place, only: [:show]
+			before_action :set_place, only: [:show, :update, :destroy]
 
 			def index
 				places = Place.order(:name)

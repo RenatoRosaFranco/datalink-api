@@ -11,6 +11,6 @@
 #
 FactoryBot.define do
   factory :region do
-    name { FFaker::AddressBR.city_prefix }
+    name { FFaker::Name.unique.first_name }
   end
 end

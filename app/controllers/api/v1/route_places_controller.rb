@@ -3,7 +3,7 @@
 module API
 	module V1
 		class RoutePlacesController < ApplicationController
-			before_action :set_route_place, only: [:show, :edit, :update]
+			before_action :set_route_place, only: [:show, :edit, :update, :destroy]
 
 			def index
 				route_places = RoutePlace.order(created_at: :desc)
@@ -59,8 +59,7 @@ module API
 			end
 
 			def route_place_params
-				params.require(:route_place)
-					.permit(:route_id, :place_id)
+				params.require(:route_place).permit(:route_id, :place_id)
 			end
 		end
 	end

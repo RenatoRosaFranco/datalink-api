@@ -13,13 +13,13 @@
 #
 # Indexes
 #
-#  index_names_on_region_id  (region_id)
+#  index_states_on_region_id  (region_id)
 #
 FactoryBot.define do
   factory :state do
-    name { FFaker::AddressBR.state }
-    acronym { FFaker::AddressBR.state_abbr }
+    name { FFaker::Name.unique.name }
+    acronym { FFaker::Name.unique.last_name[0..3] }
     
-    association :region, factory: :region, strategy: :build
+    region
   end
 end

@@ -12,6 +12,6 @@
 #
 FactoryBot.define do
   factory :route do
-    name { FFaker::AddressBR.neighborhood }
+    name { FFaker::AddressBR.unique.neighborhood }
   end
 end
